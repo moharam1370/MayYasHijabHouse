@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>فروشگاه حجاب ژیوا | خرید چادر و ملزومات حجاب</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --green-dark:  #2e6b3e;
+  --green-main:  #3d8b50;
+  --green-light: #e8f5ec;
+  --green-mid:   #c2dfc9;
+  --teal:        #0e9e8e;
+  --teal-light:  #e0f7f5;
+  --red-sale:    #c0392b;
+  --text-dark:   #1a1a1a;
+  --text-mid:    #4a4a4a;
+  --text-muted:  #888;
+  --border:      #e0e0e0;
+  --bg-page:     #f5f5f5;
+  --bg-white:    #ffffff;
+  --radius-sm:   6px;
+  --radius-md:   10px;
+  --radius-lg:   16px;
+  --shadow-sm:   0 1px 4px rgba(0,0,0,.08);
+  --shadow-md:   0 4px 16px rgba(0,0,0,.12);
+}
+
+body {
+  font-family: 'Vazirmatn', Tahoma, sans-serif;
+  background: var(--bg-page);
+  color: var(--text-dark);
+  font-size: 14px;
+  line-height: 1.7;
+}
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; display: block; }
+
+/* ══ TOP BAR ══ */
+.topbar { background: var(--green-dark); color: #fff; font-size: 12px; padding: 6px 0; }
+.topbar-inner {
+  max-width: 1200px; margin: auto; padding: 0 16px;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 6px;
+}
+.topbar a { color: #c8e6c9; font-size: 12px; margin-right: 14px; }
+.topbar a:hover { color: #fff; }
+.topbar-left { display: flex; align-items: center; flex-wrap: wrap; }
+.topbar-right { display: flex; align-items: center; gap: 12px; }
+
+/* ══ HEADER ══ */
+.header {
+  background: var(--bg-white);
+  border-bottom: 3px solid var(--green-main);
+  position: sticky; top: 0; z-index: 100;
+  box-shadow: var(--shadow-sm);
+}
+.header-inner {
+  max-width: 1200px; margin: auto; padding: 12px 16px;
+  display: flex; align-items: center; gap: 16px;
+}
+.logo-text { display: flex; flex-direction: column; line-height: 1.3; }
+.logo-title { font-size: 24px; font-weight: 700; color: var(--green-dark); }
+.logo-sub { font-size: 11px; color: var(--text-muted); }
+
+.search-bar {
+  flex: 1; display: flex; max-width: 480px;
+  border: 1.5px solid var(--border); border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+.search-bar input {
+  flex: 1; border: none; outline: none;
+  padding: 9px 14px; font-family: inherit; font-size: 13px;
+  background: #fafafa; direction: rtl;
+}
+.search-bar button {
+  background: var(--green-main); color: #fff;
+  border: none; padding: 0 18px; cursor: pointer; font-size: 16px;
+  display: flex; align-items: center; transition: background .15s;
+}
+.search-bar button:hover { background: var(--green-dark); }
+
+.header-actions { display: flex; gap: 10px; align-items: center; margin-right: auto; }
+.btn-user {
+  display: flex; flex-direction: column; align-items: center; gap: 2px;
+  color: var(--text-mid); cursor: pointer; font-size: 11px;
+  background: none; border: none; padding: 4px 8px;
+  border-radius: var(--radius-sm); transition: background .15s;
+  font-family: inherit;
+}
+.btn-user:hover { background: var(--green-light); color: var(--green-dark); }
+.btn-user svg { width: 22px; height: 22px; }
+.btn-cart {
+  background: var(--green-main); color: #fff;
+  border-radius: var(--radius-sm); padding: 9px 16px;
+  display: flex; align-items: center; gap: 8px;
+  font-family: inherit; font-size: 13px; border: none; cursor: pointer;
+  transition: background .15s; white-space: nowrap;
+}
+.btn-cart:hover { background: var(--green-dark); }
+.cart-badge {
+  background: #fff; color: var(--green-dark);
+  border-radius: 50%; width: 20px; height: 20px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700;
+}
+
+/* ══ NAV ══ */
+.nav { background: var(--green-main); }
+.nav-inner {
+  max-width: 1200px; margin: auto; padding: 0 16px;
+  display: flex; align-items: center; overflow-x: auto;
+  scrollbar-width: none;
+}
+.nav-inner::-webkit-scrollbar { display: none; }
+.nav a {
+  color: rgba(255,255,255,.9); padding: 11px 15px;
+  display: block; font-size: 13px; white-space: nowrap;
+  transition: background .15s;
+}
+.nav a:hover, .nav a.active { background: rgba(0,0,0,.18); color: #fff; }
+.nav .sale-link { color: #ffe082; font-weight: 700; }
+
+/* ══ HERO ══ */
+.hero {
+  background: linear-gradient(135deg, #1b4d2e 0%, var(--green-dark) 50%, #0e6b5a 100%);
+  color: #fff; position: relative; overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background: url('image/1.jpg') center/cover;
+  opacity: 0.08;
+}
+.hero-inner {
+  max-width: 1200px; margin: auto; padding: 52px 16px;
+  display: flex; align-items: center; gap: 40px;
+  position: relative;
+}
+.hero-text { flex: 1; }
+.hero-badge {
+  display: inline-block;
+  background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.3);
+  border-radius: 20px; padding: 4px 16px; font-size: 12px; margin-bottom: 16px;
+}
+.hero h1 { font-size: 30px; font-weight: 700; line-height: 1.5; margin-bottom: 14px; }
+.hero p { font-size: 14px; color: rgba(255,255,255,.8); max-width: 420px; margin-bottom: 26px; }
+.hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn-primary {
+  background: #fff; color: var(--green-dark);
+  padding: 11px 28px; border-radius: var(--radius-sm);
+  font-family: inherit; font-size: 14px; font-weight: 700;
+  border: none; cursor: pointer; transition: opacity .15s;
+}
+.btn-primary:hover { opacity: .9; }
+.btn-outline-w {
+  background: transparent; color: #fff;
+  padding: 11px 24px; border-radius: var(--radius-sm);
+  font-family: inherit; font-size: 14px;
+  border: 1.5px solid rgba(255,255,255,.5); cursor: pointer;
+  transition: border-color .15s;
+}
+.btn-outline-w:hover { border-color: #fff; }
+.hero-stats { display: flex; gap: 28px; margin-top: 30px; flex-wrap: wrap; }
+.hero-stat span:first-child { display: block; font-size: 22px; font-weight: 700; }
+.hero-stat span:last-child { font-size: 11px; color: rgba(255,255,255,.65); }
+.hero-img-wrap {
+  flex-shrink: 0; width: 300px; height: 260px;
+  border-radius: var(--radius-lg); overflow: hidden;
+  border: 3px solid rgba(255,255,255,.2);
+}
+.hero-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ══ TRUST BAR ══ */
+.trust-bar { background: var(--bg-white); border-bottom: 1px solid var(--border); }
+.trust-inner {
+  max-width: 1200px; margin: auto; padding: 0 16px;
+  display: grid; grid-template-columns: repeat(4, 1fr);
+}
+.trust-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 14px 12px; border-left: 1px solid var(--border);
+}
+.trust-item:last-child { border-left: none; }
+.trust-icon {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--green-light);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; flex-shrink: 0;
+}
+.trust-text strong { display: block; font-size: 13px; font-weight: 700; }
+.trust-text span { font-size: 11px; color: var(--text-muted); }
+
+/* ══ SECTION ══ */
+.section { max-width: 1200px; margin: 30px auto; padding: 0 16px; }
+.section-fullwidth { max-width: 100%; margin: 30px 0; padding: 0 32px; }
+.section-fullwidth .section-header { max-width: 1860px; margin-left: auto; margin-right: auto; }
+.section-header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 20px; padding-bottom: 10px;
+  border-bottom: 2px solid var(--green-light);
+}
+.section-title {
+  font-size: 18px; font-weight: 700;
+  display: flex; align-items: center; gap: 8px;
+}
+.section-title::before {
+  content: ''; display: block; width: 4px; height: 22px;
+  background: var(--green-main); border-radius: 2px;
+}
+.section-link { font-size: 13px; color: var(--green-main); }
+.section-link:hover { color: var(--green-dark); }
+
+/* ══ ARCH CATEGORY CARDS ══ */
+.arch-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  max-width: 1860px;
+  margin: 0 auto;
+}
+/* عرض/ارتفاع بزرگ‌شده مخصوص غیر موبایل (تبلت و دسکتاپ) */
+@media (min-width: 769px) {
+  .arch-shape { aspect-ratio: 3 / 3.85; }
+}
+
+.arch-card-wrap {
+  padding-bottom: 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.arch-shape {
+  width: 100%;
+  aspect-ratio: 3 / 4.2;
+  overflow: hidden;
+  border-radius: 0 0 12px 12px;
+  clip-path: polygon(
+    0% 100%,
+    0% 28%,
+    5% 22%,
+    15% 12%,
+    28% 5%,
+    50% 0%,
+    72% 5%,
+    85% 12%,
+    95% 22%,
+    100% 28%,
+    100% 100%
+  );
+  box-shadow: var(--shadow-md);
+  position: relative;
+  flex-shrink: 0;
+}
+
+.arch-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .3s;
+}
+.arch-card-wrap:hover .arch-img { transform: scale(1.05); }
+
+.arch-overlay {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 45%;
+  background: linear-gradient(to top, rgba(0,229,184,.95) 0%, rgba(14,158,142,.55) 60%, transparent 100%);
+}
+
+.arch-label {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  color: var(--green-dark);
+  font-size: 15px; font-weight: 700;
+  padding: 8px 28px;
+  border-radius: 30px;
+  white-space: nowrap;
+  box-shadow: 0 3px 10px rgba(0,0,0,.15);
+  border: 2px solid var(--green-light);
+  z-index: 2;
+}
+
+/* ══ PRODUCT GRID ══ */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  max-width: 1860px;
+  margin: 0 auto;
+}
+.product-card {
+  background: var(--bg-white); border: 1px solid var(--border);
+  border-radius: var(--radius-md); overflow: hidden;
+  transition: box-shadow .15s, border-color .15s; cursor: pointer;
+}
+.product-card:hover { box-shadow: var(--shadow-md); border-color: var(--green-mid); }
+.product-img {
+  width: 100%; aspect-ratio: 3 / 3.85; overflow: hidden;
+  position: relative; background: var(--green-light);
+}
+.product-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .3s; }
+.product-card:hover .product-img img { transform: scale(1.05); }
+.badge-sale {
+  position: absolute; top: 10px; right: 10px;
+  background: var(--red-sale); color: #fff;
+  font-size: 11px; font-weight: 700;
+  padding: 3px 10px; border-radius: 20px;
+}
+.badge-new {
+  position: absolute; top: 10px; right: 10px;
+  background: var(--green-main); color: #fff;
+  font-size: 11px; font-weight: 700;
+  padding: 3px 10px; border-radius: 20px;
+}
+.product-body { padding: 12px; }
+.product-name {
+  font-size: 13px; font-weight: 700; color: var(--text-dark);
+  margin-bottom: 6px; line-height: 1.5;
+  display: -webkit-box; -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical; overflow: hidden; min-height: 40px;
+}
+.product-variants { font-size: 11px; color: var(--text-muted); margin-bottom: 8px; }
+.product-price-row { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
+.price-main { font-size: 16px; font-weight: 700; color: var(--green-dark); }
+.price-old { font-size: 12px; color: var(--text-muted); text-decoration: line-through; }
+.price-unit { font-size: 11px; color: var(--text-muted); }
+.btn-buy {
+  width: 100%; background: var(--green-main); color: #fff;
+  border: none; border-radius: var(--radius-sm);
+  padding: 9px; font-family: inherit; font-size: 13px;
+  cursor: pointer; transition: background .15s;
+}
+.btn-buy:hover { background: var(--green-dark); }
+
+/* ══ BANNER STRIP ══ */
+.banner-strip {
+  background: linear-gradient(90deg, #1b4d2e 0%, var(--teal) 100%);
+  color: #fff;
+}
+.banner-strip-inner {
+  max-width: 1200px; margin: auto; padding: 24px 16px;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+}
+.banner-strip h2 { font-size: 20px; font-weight: 700; }
+.banner-strip p { font-size: 13px; color: rgba(255,255,255,.75); margin-top: 4px; }
+.btn-white {
+  background: #fff; color: var(--green-dark);
+  border: none; padding: 10px 26px;
+  border-radius: var(--radius-sm);
+  font-family: inherit; font-size: 14px; font-weight: 700;
+  cursor: pointer; white-space: nowrap; flex-shrink: 0;
+}
+
+/* ══ FOOTER ══ */
+.footer { background: #1c1c1c; color: #ccc; margin-top: 40px; }
+.footer-inner {
+  max-width: 1200px; margin: auto; padding: 40px 16px 20px;
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px;
+}
+.footer h3 { color: #fff; font-size: 15px; margin-bottom: 14px; font-weight: 700; }
+.footer ul { list-style: none; }
+.footer ul li { margin-bottom: 8px; }
+.footer ul a { color: #aaa; font-size: 13px; }
+.footer ul a:hover { color: #fff; }
+.footer-about p { font-size: 13px; line-height: 1.9; color: #aaa; margin-bottom: 12px; }
+.contact-row { display: flex; align-items: center; gap: 8px; font-size: 12px; color: #aaa; margin-bottom: 7px; }
+.social-links { display: flex; gap: 10px; margin-top: 14px; }
+.social-btn {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: #333; display: flex; align-items: center;
+  justify-content: center; font-size: 16px; color: #aaa;
+  transition: background .15s;
+}
+.social-btn:hover { background: var(--green-main); color: #fff; }
+.footer-bottom {
+  border-top: 1px solid #333; padding: 16px;
+  text-align: center; font-size: 12px; color: #666;
+  max-width: 1200px; margin: 0 auto;
+}
+
+/* ══ WHATSAPP ══ */
+.wa-float {
+  position: fixed; bottom: 24px; left: 24px; z-index: 999;
+  background: #25d366; color: #fff;
+  border-radius: 50px; padding: 12px 20px;
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13px; font-weight: 700;
+  box-shadow: 0 4px 16px rgba(37,211,102,.4);
+  cursor: pointer; transition: transform .15s;
+}
+.wa-float:hover { transform: translateY(-2px); }
+.wa-float svg { width: 22px; height: 22px; }
+
+/* ══ INFO NOTICE SECTION ══ */
+.info-notice {
+  background: var(--green-light);
+  border-top: 1px solid var(--green-mid);
+  border-bottom: 1px solid var(--green-mid);
+}
+.info-notice-inner {
+  max-width: 1860px; margin: auto; padding: 22px 32px;
+}
+.info-notice-title {
+  font-size: 16px; font-weight: 700; color: var(--green-dark);
+  display: flex; align-items: center; gap: 8px; margin-bottom: 16px;
+}
+.info-notice-row {
+  display: flex; flex-wrap: wrap; gap: 14px;
+}
+.info-card {
+  flex: 1; min-width: 210px;
+  background: var(--bg-white); border: 1px solid var(--border);
+  border-radius: var(--radius-md); padding: 14px 16px;
+  display: flex; flex-direction: column; gap: 8px;
+  box-shadow: var(--shadow-sm);
+}
+.info-card-head { display: flex; align-items: center; gap: 8px; }
+.info-card-icon {
+  width: 34px; height: 34px; border-radius: 50%;
+  background: var(--green-light); flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+}
+.info-card-text { font-size: 12.5px; color: var(--text-mid); line-height: 1.8; }
+.info-card-text strong { display: block; font-size: 13.5px; color: var(--text-dark); margin-bottom: 2px; }
+.info-card-phone {
+  font-size: 15px; font-weight: 700; color: var(--green-dark);
+  direction: ltr; text-align: right;
+}
+.info-card-btn {
+  margin-top: auto; align-self: flex-start;
+  background: var(--green-main); color: #fff;
+  font-size: 12px; font-weight: 700; padding: 7px 18px;
+  border-radius: 20px; transition: background .15s;
+}
+.info-card-btn:hover { background: var(--green-dark); }
+
+@media (max-width: 768px) {
+  .info-notice-row { flex-direction: column; }
+  .info-card { min-width: 100%; }
+}
+
+
+@media (min-width: 1400px) {
+  .arch-grid, .product-grid { grid-template-columns: repeat(4, 1fr); }
+}
+@media (min-width: 1025px) and (max-width: 1399px) {
+  .arch-grid, .product-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .arch-grid, .product-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 1024px) {
+  .footer-inner { grid-template-columns: 1fr 1fr; gap: 24px; }
+  .trust-inner { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .product-grid { grid-template-columns: repeat(2, 1fr); }
+  .arch-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .hero-img-wrap { display: none; }
+  .hero h1 { font-size: 22px; }
+  .banner-strip-inner { flex-direction: column; text-align: center; }
+  .search-bar { max-width: 100%; }
+  .header-inner { flex-wrap: wrap; }
+  .trust-inner { grid-template-columns: repeat(2, 1fr); }
+  /* .arch-label { font-size: 18px; padding: 6px 25px; } */
+   .arch-label { font-size: 13px; padding: 6px 18px; }
+}
+@media (max-width: 480px) {
+  .product-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .arch-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .arch-shape { aspect-ratio: 3 / 4.6; }
+  .footer-inner { grid-template-columns: 1fr; }
+  .trust-inner { grid-template-columns: repeat(2, 1fr); }
+  .topbar-left { display: none; }
+  .hero { padding: 0; }
+  .hero-inner { padding: 32px 16px; }
+  .hero h1 { font-size: 40px; }
+  .product-img { aspect-ratio: 3 / 4.6; }
+  .arch-label { font-size: 12px; padding: 5px 14px; }
+  .section-fullwidth { padding: 0 16px; }
+  .info-notice-inner { padding: 18px 16px; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-left">
+      <a href="#">📍 تهرانپارس، خ. شهید سلیمانی، پ.۷۴</a>
+      <a href="#">⏰ شنبه تا پنجشنبه ۱۲ تا ۲۰</a>
+    </div>
+    <div class="topbar-right">
+      <a href="#">📞 ۰۹۱۲۰۵۲۵۷۴۲</a>
+      <a href="#">ورود / ثبت‌نام</a>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-inner">
+    <div class="logo-text">
+      <span class="logo-title">ژیوا</span>
+      <span class="logo-sub">مزون حجاب تخصصی</span>
+    </div>
+    <div class="search-bar">
+      <input type="text" placeholder="جستجو... (چادر کرپ، مقنعه، روسری لینن)">
+      <button>🔍</button>
+    </div>
+    <div class="header-actions">
+      <button class="btn-user">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+          <circle cx="12" cy="7" r="4"/>
+        </svg>
+        حساب
+      </button>
+      <button class="btn-cart">
+        🛒 سبد خرید <span class="cart-badge">0</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="active">خانه</a>
+    <a href="#">چادر</a>
+    <a href="#">عبا</a>
+    <a href="#">مانتو عبایی</a>
+    <a href="#">روسری و شال</a>
+    <a href="#">مقنعه</a>
+    <a href="#">ملزومات حجاب</a>
+    <a href="#">پیگیری سفارش</a>
+    <a href="#" class="sale-link">🔥 حراجی</a>
+    <a href="#">تماس با ما</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge">🌿 جشنواره تابستانه ۱۴۰۴</div>
+      <h1>بزرگترین مرکز تخصصی<br>خرید چادر و حجاب ایران</h1>
+      <p>بیش از ۳۰۰ مدل چادر مشکی، عبا و ملزومات حجاب با کیفیت عالی و قیمت مناسب. ارسال فوری به سراسر کشور.</p>
+      <div class="hero-btns">
+        <button class="btn-primary">مشاهده محصولات</button>
+        <button class="btn-outline-w">مشاوره واتساپ 💬</button>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><span>+۳۰۰</span><span>مدل چادر</span></div>
+        <div class="hero-stat"><span>+۱۵ سال</span><span>سابقه فعالیت</span></div>
+        <div class="hero-stat"><span>+۵۰۰۰</span><span>مشتری راضی</span></div>
+      </div>
+    </div>
+    <div class="hero-img-wrap">
+      <img src="image/1.jpg" alt="حجاب ژیوا">
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-inner">
+    <div class="trust-item">
+      <div class="trust-icon">🚚</div>
+      <div class="trust-text">
+        <strong>ارسال فوری</strong>
+        <span>تحویل تهران همان روز</span>
+      </div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">✅</div>
+      <div class="trust-text">
+        <strong>ضمانت اصالت</strong>
+        <span>کالای اصل و باکیفیت</span>
+      </div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">🔄</div>
+      <div class="trust-text">
+        <strong>۷ روز مرجوعی</strong>
+        <span>بازگشت بدون دردسر</span>
+      </div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">💬</div>
+      <div class="trust-text">
+        <strong>پشتیبانی آنلاین</strong>
+        <span>شنبه تا پنجشنبه ۱۲ تا ۲۰</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CATEGORIES - ARCH ISLAMIC -->
+<div class="section-fullwidth">
+  <div class="section-header">
+    <div class="section-title">دسته‌بندی محصولات</div>
+    <a href="#" class="section-link">مشاهده همه ←</a>
+  </div>
+
+  <div class="arch-grid">
+
+    <a href="#"><div class="arch-card-wrap">
+      <div class="arch-shape">
+        <img class="arch-img" src="image/1.jpg" alt="چادر">
+        <div class="arch-overlay"></div>
+      </div>
+      <div class="arch-label">پیراهن</div>
+    </div></a>
+
+    <a href="#"><div class="arch-card-wrap">
+      <div class="arch-shape">
+        <img class="arch-img" src="image/2.jpg" alt="عبا">
+        <div class="arch-overlay"></div>
+      </div>
+      <div class="arch-label">عبا</div>
+    </div></a>
+
+    <a href="#"><div class="arch-card-wrap">
+      <div class="arch-shape">
+        <img class="arch-img" src="image/1.jpg" alt="روسری">
+        <div class="arch-overlay"></div>
+      </div>
+      <div class="arch-label">چادر</div>
+    </div></a>
+
+    <a href="#"><div class="arch-card-wrap">
+      <div class="arch-shape">
+        <img class="arch-img" src="image/1.jpg" alt="مقنعه">
+        <div class="arch-overlay"></div>
+      </div>
+      <div class="arch-label">روسری</div>
+    </div></a>
+
+    <a href="#"><div class="arch-card-wrap">
+      <div class="arch-shape">
+        <img class="arch-img" src="image/1.jpg" alt="مانتو عبایی">
+        <div class="arch-overlay"></div>
+      </div>
+      <div class="arch-label">عبا نوجوان</div>
+    </div></a>
+
+    <a href="#"><div class="arch-card-wrap">
+      <div class="arch-shape">
+        <img class="arch-img" src="image/1.jpg" alt="شال">
+        <div class="arch-overlay"></div>
+      </div>
+      <div class="arch-label">شال</div>
+    </div></a>
+
+    <a href="#"><div class="arch-card-wrap">
+      <div class="arch-shape">
+        <img class="arch-img" src="image/1.jpg" alt="ملزومات">
+        <div class="arch-overlay"></div>
+      </div>
+      <div class="arch-label">شومیز</div>
+    </div></a>
+
+    <a href="#"><div class="arch-card-wrap">
+      <div class="arch-shape">
+        <img class="arch-img" src="image/1.jpg" alt="چادر لوکس">
+        <div class="arch-overlay"></div>
+      </div>
+      <div class="arch-label">نذر عرفه</div>
+    </div></a>
+
+    <a href="#"><div class="arch-card-wrap">
+      <div class="arch-shape">
+        <img class="arch-img" src="image/1.jpg" alt="پاپوش">
+        <div class="arch-overlay"></div>
+      </div>
+      <div class="arch-label">ملزومات حجاب</div>
+    </div></a>
+
+  </div>
+</div>
+
+<!-- INFO NOTICE -->
+<div class="info-notice">
+  <div class="info-notice-inner">
+    <div class="info-notice-title">📢 اطلاع‌رسانی</div>
+    <div class="info-notice-row">
+
+      <div class="info-card">
+        <div class="info-card-head">
+          <div class="info-card-icon">📞</div>
+          <div class="info-card-text"><strong>اختلال در خرید؟</strong>با این شماره تماس بگیرید</div>
+        </div>
+        <div class="info-card-phone">۰۹۳۶۱۲۱۶۰۳۴</div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-card-head">
+          <div class="info-card-icon">📦</div>
+          <div class="info-card-text"><strong>کد رهگیری مرسولات</strong>در این کانال قرار داده می‌شود</div>
+        </div>
+        <a href="https://eitaa.com/Shayestegan_1" target="_blank" class="info-card-btn">کلیک کنید</a>
+      </div>
+
+      <div class="info-card">
+        <div class="info-card-head">
+          <div class="info-card-icon">💬</div>
+          <div class="info-card-text"><strong>ایتا</strong>شایستگان را دنبال کنید</div>
+        </div>
+        <a href="https://eitaa.com/hejabshayestegan" target="_blank" class="info-card-btn">کلیک کنید</a>
+      </div>
+
+      <div class="info-card">
+        <div class="info-card-head">
+          <div class="info-card-icon">💬</div>
+          <div class="info-card-text"><strong>روبیکا</strong>شایستگان را دنبال کنید</div>
+        </div>
+        <a href="https://rubika.ir/Shayestegann" target="_blank" class="info-card-btn">کلیک کنید</a>
+      </div>
+
+      <div class="info-card">
+        <div class="info-card-head">
+          <div class="info-card-icon">💬</div>
+          <div class="info-card-text"><strong>بله</strong>شایستگان را دنبال کنید</div>
+        </div>
+        <a href="https://ble.ir/shayesteganorg" target="_blank" class="info-card-btn">کلیک کنید</a>
+      </div>
+
+      <div class="info-card">
+        <div class="info-card-head">
+          <div class="info-card-icon">🛒</div>
+          <div class="info-card-text"><strong>فروش عمده</strong>همکاران عزیز این کانال را دنبال کنید</div>
+        </div>
+        <a href="https://eitaa.com/Shayestegan_omde" target="_blank" class="info-card-btn">کلیک کنید</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- NEW PRODUCTS -->
+<div class="section-fullwidth">
+  <div class="section-header">
+    <div class="section-title">جدیدترین محصولات</div>
+    <a href="#" class="section-link">مشاهده همه ←</a>
+  </div>
+  <div class="product-grid">
+
+    <div class="product-card">
+      <div class="product-img">
+        <img src="image/1.jpg" alt="مانتو عبایی رکسانا">
+        <span class="badge-new">جدید</span>
+      </div>
+      <div class="product-body">
+        <div class="product-name">مانتو عبایی رکسانا – جواهردوزی</div>
+        <div class="product-variants">۳ تنوع رنگی موجود</div>
+        <div class="product-price-row">
+          <span class="price-main">۱،۲۵۰،۰۰۰</span>
+          <span class="price-unit">تومان</span>
+        </div>
+        <button class="btn-buy">افزودن به سبد خرید</button>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img">
+        <img src="image/1.jpg" alt="مانتو عبایی مهرناز">
+        <span class="badge-sale">۲۰٪ تخفیف</span>
+      </div>
+      <div class="product-body">
+        <div class="product-name">مانتو عبایی مهرناز – مجلسی</div>
+        <div class="product-variants">۲ تنوع رنگی موجود</div>
+        <div class="product-price-row">
+          <span class="price-main">۹۸۰،۰۰۰</span>
+          <span class="price-old">۱،۲۰۰،۰۰۰</span>
+          <span class="price-unit">تومان</span>
+        </div>
+        <button class="btn-buy">افزودن به سبد خرید</button>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img">
+        <img src="image/1.jpg" alt="چادر کرپ">
+        <span class="badge-new">جدید</span>
+      </div>
+      <div class="product-body">
+        <div class="product-name">چادر کرپ ایرانی مدل دانشجویی</div>
+        <div class="product-variants">سایز استاندارد</div>
+        <div class="product-price-row">
+          <span class="price-main">۴۵۰،۰۰۰</span>
+          <span class="price-unit">تومان</span>
+        </div>
+        <button class="btn-buy">افزودن به سبد خرید</button>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img">
+        <img src="image/1.jpg" alt="مانتو عبایی ماهور">
+        <span class="badge-sale">۱۵٪ تخفیف</span>
+      </div>
+      <div class="product-body">
+        <div class="product-name">مانتو عبایی ماهور – تخفیف ویژه</div>
+        <div class="product-variants">۱ تنوع موجود</div>
+        <div class="product-price-row">
+          <span class="price-main">۸۵۰،۰۰۰</span>
+          <span class="price-old">۱،۰۰۰،۰۰۰</span>
+          <span class="price-unit">تومان</span>
+        </div>
+        <button class="btn-buy">افزودن به سبد خرید</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- BANNER -->
+<div class="banner-strip">
+  <div class="banner-strip-inner">
+    <div>
+      <h2>🔥 حراجی ویژه تابستان</h2>
+      <p>تا ۴۰٪ تخفیف روی محصولات انتخابی – فقط تا پایان تیر ماه</p>
+    </div>
+    <button class="btn-white">مشاهده حراجی ←</button>
+  </div>
+</div>
+
+<!-- SALE PRODUCTS -->
+<div class="section-fullwidth">
+  <div class="section-header">
+    <div class="section-title">حراجی محصولات</div>
+    <a href="#" class="section-link">مشاهده همه ←</a>
+  </div>
+  <div class="product-grid">
+
+    <div class="product-card">
+      <div class="product-img">
+        <img src="image/1.jpg" alt="کت سارافون">
+        <span class="badge-sale">۳۰٪ تخفیف</span>
+      </div>
+      <div class="product-body">
+        <div class="product-name">کت سارافون – تخفیف ویژه</div>
+        <div class="product-variants">۳ تنوع رنگی</div>
+        <div class="product-price-row">
+          <span class="price-main">۶۵۰،۰۰۰</span>
+          <span class="price-old">۹۵۰،۰۰۰</span>
+          <span class="price-unit">تومان</span>
+        </div>
+        <button class="btn-buy">افزودن به سبد خرید</button>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img">
+        <img src="image/1.jpg" alt="مانتو عبایی سارینا">
+        <span class="badge-sale">۲۵٪ تخفیف</span>
+      </div>
+      <div class="product-body">
+        <div class="product-name">مانتو عبایی سارینا</div>
+        <div class="product-variants">موجود</div>
+        <div class="product-price-row">
+          <span class="price-main">۷۲۰،۰۰۰</span>
+          <span class="price-old">۹۵۰،۰۰۰</span>
+          <span class="price-unit">تومان</span>
+        </div>
+        <button class="btn-buy">افزودن به سبد خرید</button>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img">
+        <img src="image/1.jpg" alt="پیراهن مجلسی">
+        <span class="badge-sale">۴۰٪ تخفیف</span>
+      </div>
+      <div class="product-body">
+        <div class="product-name">پیراهن مجلسی گیتی – تخفیف استثنایی</div>
+        <div class="product-variants">۵ تنوع رنگی</div>
+        <div class="product-price-row">
+          <span class="price-main">۵۴۰،۰۰۰</span>
+          <span class="price-old">۹۰۰،۰۰۰</span>
+          <span class="price-unit">تومان</span>
+        </div>
+        <button class="btn-buy">افزودن به سبد خرید</button>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img">
+        <img src="image/1.jpg" alt="پیراهن پلنگی">
+        <span class="badge-sale">۲۰٪ تخفیف</span>
+      </div>
+      <div class="product-body">
+        <div class="product-name">پیراهن چپ و راستی پلنگی</div>
+        <div class="product-variants">موجود</div>
+        <div class="product-price-row">
+          <span class="price-main">۶۸۰،۰۰۰</span>
+          <span class="price-old">۸۵۰،۰۰۰</span>
+          <span class="price-unit">تومان</span>
+        </div>
+        <button class="btn-buy">افزودن به سبد خرید</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-about">
+      <h3>مزون حجاب ژیوا</h3>
+      <p>فروشگاه تخصصی چادر مشکی و ملزومات حجاب در تهرانپارس. با بیش از ۱۵ سال سابقه و بیش از ۳۰۰ مدل محصول، در خدمت بانوان سراسر ایران هستیم.</p>
+      <div class="contact-row">📍 تهرانپارس، خ. شهید سلیمانی، کوچه قره‌زادنیا، پ.۷۴</div>
+      <div class="contact-row">📞 ۰۹۱۲۰۵۲۵۷۴۲ (فقط پیام)</div>
+      <div class="contact-row">⏰ شنبه تا پنجشنبه ۱۲ تا ۲۰</div>
+      <div class="social-links">
+        <a href="#" class="social-btn">📸</a>
+        <a href="#" class="social-btn">💬</a>
+        <a href="#" class="social-btn">📱</a>
+      </div>
+    </div>
+    <div>
+      <h3>دسترسی سریع</h3>
+      <ul>
+        <li><a href="#">چادر مشکی</a></li>
+        <li><a href="#">مانتو عبایی</a></li>
+        <li><a href="#">روسری و شال</a></li>
+        <li><a href="#">مقنعه نماز</a></li>
+        <li><a href="#">چادر لوکس</a></li>
+        <li><a href="#">حراجی</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>خدمات</h3>
+      <ul>
+        <li><a href="#">پیگیری سفارش</a></li>
+        <li><a href="#">باشگاه مشتریان</a></li>
+        <li><a href="#">راهنمای خرید</a></li>
+        <li><a href="#">شرایط مرجوعی</a></li>
+        <li><a href="#">درباره ما</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>مقالات</h3>
+      <ul>
+        <li><a href="#">انواع چادر مشکی</a></li>
+        <li><a href="#">چادر مناسب اربعین</a></li>
+        <li><a href="#">راهنمای انتخاب چادر</a></li>
+        <li><a href="#">مدل‌های جدید عبا</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    تمامی حقوق این سایت متعلق به مزون حجاب ژیوا می‌باشد © ۱۴۰۴
+  </div>
+</footer>
+
+<!-- WHATSAPP -->
+<a href="https://wa.me/989120525742" class="wa-float">
+  <svg viewBox="0 0 24 24" fill="currentColor">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+  مشاوره و خرید
+</a>
+
+</body>
+</html>
